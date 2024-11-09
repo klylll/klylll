@@ -1,0 +1,96 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>“时光修复师”：模拟AR技术下的古籍再生游戏</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            background-color: #f0f0f0;  
+            margin: 0;  
+            padding: 0;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            height: 100vh;  
+        }  
+        .game-container {  
+            text-align: center;  
+            background-color: #ffffff;  
+            padding: 20px;  
+            border-radius: 10px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+        }  
+        .game-image {  
+            width: 80%;  
+            max-width: 600px;  
+            margin: 20px auto;  
+            cursor: pointer;  
+            transition: transform 0.3s ease;  
+        }  
+        .game-image:hover {  
+            transform: scale(1.05);  
+        }  
+        .button {  
+            padding: 10px 20px;  
+            font-size: 16px;  
+            cursor: pointer;  
+            border: none;  
+            border-radius: 5px;  
+            background-color: #007bff;  
+            color: white;  
+            margin: 10px auto;  
+            display: inline-block;  
+            transition: background-color 0.3s ease;  
+        }  
+        .button:hover {  
+            background-color: #0056b3;  
+        }  
+    </style>  
+</head>  
+<body>  
+  
+<div class="game-container">  
+    <h1>“时光修复师”：模拟AR技术下的古籍再生游戏</h1>  
+    <img id="game-image" class="game-image" src="original_book.jpg" alt="古籍原貌">  
+    <button class="button" onclick="repairBook()">使用AR修复古籍</button>  
+    <p id="status-text" style="margin-top: 20px; font-size: 14px;"></p>  
+</div>  
+  
+<script>  
+    let isRepaired = false;  
+  
+    function repairBook() {  
+        const gameImage = document.getElementById('game-image');  
+        const statusText = document.getElementById('status-text');  
+  
+        if (!isRepaired) {  
+            gameImage.src = 'restored_book.jpg'; // 替换为修复后的图片  
+            statusText.textContent = '古籍已成功修复！点击图片可查看修复前后对比。';  
+            isRepaired = true;  
+        } else {  
+            // 如果已经修复，可以添加重置功能（可选）  
+            // 例如，再次点击按钮可以恢复到原始状态  
+            gameImage.src = 'original_book.jpg'; // 替换回原始图片  
+            statusText.textContent = '古籍已重置为原始状态。点击按钮再次修复。';  
+            isRepaired = false;  
+        }  
+  
+        // 为了模拟AR的交互性，我们可以添加一些动画或声音效果（可选）  
+        // 例如，使用CSS动画或JavaScript的setTimeout来创建短暂的视觉效果  
+    }  
+  
+    // 可选：添加图片点击事件来切换修复前后状态（如果不需要，可以删除以下代码）  
+    gameImage.addEventListener('click', function() {  
+        if (isRepaired) {  
+            repairBook(); // 如果已经修复，则重置为原始状态  
+        } else {  
+            // 由于我们已经在按钮点击事件中处理了修复逻辑，这里只展示一个提示  
+            alert('请先点击按钮使用AR修复古籍！');  
+        }  
+    });  
+</script>  
+  
+</body>  
+</html>
